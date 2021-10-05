@@ -1,0 +1,113 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<ion-header>
+	<ion-toolbar color="light">
+	  <ion-buttons slot="start">
+		<ion-icon name="close" style="font-size: 1.5rem;" (click)="closeLoginPop()"></ion-icon>
+	  </ion-buttons>
+	  <ion-title>Informação do usuário</ion-title>
+	</ion-toolbar>
+  </ion-header>
+
+
+
+	<ion-content>
+	
+	<!-- <ion-list>
+    <ion-item color="transparent">
+      <h2>User Data</h2>
+    </ion-item>
+    <ion-item style="padding: 0px 10px 0px 0px;">
+      <p class="p-name">{{userData.snome}}</p>
+    </ion-item>
+    <ion-item style="padding: 0px 10px 0px 0px;">
+      <p class="p-name"> {{userData.nome}} </p>
+    </ion-item>
+
+    <ion-item style="padding: 0px 10px 0px 0px;text-align: center;">
+      <img class="fingerprint-img" src="../../assets/images/finger-print.png">
+    </ion-item>
+
+    <ion-item style="padding: 0px 10px 0px 0px;">
+      <img class="person-img" src="../../assets/images/Avatar.png">
+    </ion-item>
+  </ion-list> -->
+	<!-- <ion-content [fullscreen]="true" [scrollEvents]="true"> -->
+
+
+			<form (ngSubmit)="editForm()" class="form-content-style">
+		
+
+				<ion-item color="transparent">
+					<ion-label position="stacked">Nome:</ion-label>
+					<ion-input placeholder="nome" type="text" [(ngModel)]="name" name="name"></ion-input>
+				</ion-item>
+
+				<ion-item color="transparent">
+					<ion-label position="stacked">Sobrenome:</ion-label>
+					<ion-input placeholder="snome" type="text" [(ngModel)]="sname" name="sname"></ion-input>
+				</ion-item>
+
+				<ion-item color="transparent">
+					<ion-label position="stacked">E-mail:</ion-label>
+					<ion-input placeholder="email" type="text" [(ngModel)]="email" name="email"></ion-input>
+				</ion-item>
+
+				<ion-item color="transparent">
+					<ion-label position="stacked">WhatsApp:</ion-label>
+					<ion-input placeholder="whats" type="text" [(ngModel)]="whats" name="whats"></ion-input>
+				</ion-item>
+
+				<ion-item color="transparent">
+					<ion-label position="stacked">Especialidade:</ion-label>
+					<ion-input
+						placeholder="especialidade"
+						type="text"
+						[(ngModel)]="specialty"
+						name="specialty"
+					></ion-input>
+				</ion-item>
+
+				<ion-item color="transparent">
+					<ion-label position="stacked">Nº de Registro:</ion-label>
+					<ion-input placeholder="registro" type="text" [(ngModel)]="record" name="record"></ion-input>
+				</ion-item>
+
+				<ion-item color="transparent">
+					<ion-label position="stacked">CPF / CNPJ:</ion-label>
+					<ion-input placeholder="cpfcnpj" type="text" [(ngModel)]="cpfcnpj" name="cpfcnpj"></ion-input>
+				</ion-item>
+
+				<ion-item color="transparent">
+					<ion-label position="stacked">CEP:</ion-label>
+					<ion-input placeholder="cep" type="text" [(ngModel)]="zipCode" name="zipCode"></ion-input>
+				</ion-item>
+
+				<ion-item color="transparent">
+					<ion-label position="stacked">Estado:</ion-label>
+					<ion-input placeholder="estado" type="text" [(ngModel)]="state" name="state"></ion-input>
+				</ion-item>
+
+				<ion-item color="transparent">
+					<ion-label position="stacked">Cidade:</ion-label>
+					<ion-input placeholder="cidade" type="text" [(ngModel)]="city" name="city"></ion-input>
+				</ion-item>
+
+				<ion-item color="transparent">
+					<ion-label position="stacked">Endereço:</ion-label>
+					<ion-input placeholder="endereco" type="text" [(ngModel)]="address" name="address"></ion-input>
+				</ion-item>
+
+				<ion-item color="transparent">
+					<ion-label position="stacked">Senha:</ion-label>
+					<ion-input placeholder="whats" type="text" [(ngModel)]="password" name="password"></ion-input>
+				</ion-item>
+				<ion-item color="transparent">
+					<ion-label position="stacked">Confirme a sua senha:</ion-label>
+					<ion-input placeholder="whats" type="text" [(ngModel)]="cpassword" name="cpassword"></ion-input>
+				</ion-item>
+
+				<ion-button type="submit" expand="full">Editar Informação</ion-button>
+			</form>
+
+</ion-content>

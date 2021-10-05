@@ -1,0 +1,250 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <div wrap-box style="display: flex">
+
+      <ion-title>
+        <img src="../../assets/images/mia-wht.png" width="200" alt="">
+      </ion-title>
+
+      <ion-buttons slot="end" class="ion-text-right">
+        <app-user-bar></app-user-bar>
+      </ion-buttons>
+    </div>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+  <div wrap-box>
+    <ion-grid class="ion-no-padding">
+      <ion-row class="sub-toolbar">
+        <ion-col>
+          <h1>ATENDIMENTOS DE HOJE</h1>
+          <p>Gerenciamento do seu dia</p>
+        </ion-col>
+        <ion-col class="ion-text-right">
+          <ion-button color="primary" [routerLink]="['/tabs/agenda']">
+            <ion-icon name="time"></ion-icon> Agenda
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-card>
+            <ion-row>
+              <ion-col>
+                <ion-item lines="none">
+                  <ion-label color="primary" *ngIf="totalpati">
+                    <h1><strong>{{totalpati}}</strong></h1>
+                    <p>Pacientes</p>
+                  </ion-label>
+                </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item lines="none">
+                  <ion-label color="primary" class="ion-text-center" *ngIf="atendidos">
+                    <h4><strong>{{atendidos}} ATENDIMENTOS</strong></h4>
+                  </ion-label>
+                </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item lines="none">
+                  <ion-label color="secondary" class="ion-text-right" *ngIf="atender">
+                    <h4><strong>{{atender}} ATENDER</strong></h4>
+                  </ion-label>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+    <div *ngIf="prontuarios && prontuarios.length">
+      <ion-card *ngFor="let prontuario of prontuarios; let i = index">
+
+        <ion-segment style="background: #2694a3" color="light" [(ngModel)]="prontuario.seg">
+          <ion-segment-button value="prontuario">
+            <ion-icon name="heart"></ion-icon> PRONTUÁRIO
+          </ion-segment-button>
+          <ion-segment-button value="diagnostico">
+            <ion-icon name="clipboard"></ion-icon> DIAGNÓSTICO
+          </ion-segment-button>
+          <ion-segment-button value="proagnostico">
+            <ion-icon name="clipboard"></ion-icon> PROAGNÓSTICO
+          </ion-segment-button>
+        </ion-segment>
+
+        <div *ngIf="prontuario.length"></div>
+        <ion-segment *ngIf="prontuario.seg =='prontuario'" style="background: #eeeeee;" [(ngModel)]="prontuarios[i]">
+          <ion-segment-button value="hoje">Hoje</ion-segment-button>
+          <ion-segment-button value="historico">Histórico</ion-segment-button>
+          <ion-segment-button value="exames">Exames</ion-segment-button>
+          <ion-segment-button value="biosensores">Biosensores</ion-segment-button>
+          <ion-segment-button value="autocuidado">Autocuidado</ion-segment-button>
+          <ion-segment-button value="familia">Família</ion-segment-button>
+          <ion-segment-button value="opinioes">Opiniões</ion-segment-button>
+        </ion-segment>
+
+        <div style="min-height: 450px;" *ngIf="prontuario.seg =='prontuario'">
+          <ion-item lines="none">
+            <ion-avatar slot="start">
+              <img src="../../assets/images/Avatar.png" alt="">
+            </ion-avatar>
+            <ion-label>
+              <h2>{{prontuario.nome}}</h2>
+              <h4>Histórico 360</h4>
+              <p>Última análise às</p>
+            </ion-label>
+
+            <!-- <ion-label class="">
+              <h3><strong>DADOS CO CORPO</strong></h3>
+            </ion-label> -->
+
+            <ion-badge slot="end" color="secondary">Saudável</ion-badge>
+            <ion-badge slot="end" color="primary">Paciente</ion-badge>
+
+          </ion-item>
+
+          <div *ngIf="i == 'hoje'">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="2" class="ion-text-center">
+                  <div>
+                    <ion-button style="vertical-align:baseline;">Corpo</ion-button>
+                  </div>
+                  <div>
+                    <ion-button style="justify-content: space-between;">Mente</ion-button>
+                  </div>
+                  <div>
+                    <ion-button style="justify-content: space-between;">Emoções</ion-button>
+                  </div>
+                </ion-col>
+                <ion-col size="10">
+
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+          <!--hoje-->
+
+          <div *ngIf="i == 'historico'">
+            <ion-grid>
+              <ion-row *ngFor="let h of prontuario.historico">
+                <ion-col size="4" style="border-right: solid 4px #555555;">
+                  <ion-item>
+                    <span slot="start">
+                      <h1>{{h.data.$date | date: 'yyyy'}}</h1>
+                    </span>
+                    <ion-label>
+                      {{h.data.$date | date: 'MMM'}}
+                      <p>Dia {{h.data.$date | date: 'dd'}}, {{h.data.$date | date: 'HH:mm'}} </p>
+                    </ion-label>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="8">
+                  <ion-item color="light">
+                    <ion-label class="ion-text-wrap">
+                      SERVIÇO: <br> <strong>{{h.conduta}}</strong>
+                    </ion-label>
+                  </ion-item>
+
+                  <ion-item lines="none">
+                    <ion-label class="ion-text-wrap">
+                      <p><strong>Exames presenciais</strong></p>
+                      <ion-badge mode="ios">Exame1</ion-badge>
+                      <ion-badge mode="ios">Exame</ion-badge>
+                    </ion-label>
+                  </ion-item>
+
+                  <ion-item lines="none">
+                    <ion-label class="ion-text-wrap">
+                      <p><strong>Diagnose clínica:</strong></p>
+                      <p>{{h.opiniao}}</p>
+                    </ion-label>
+                  </ion-item>
+
+                  <ion-item lines="none">
+                    <ion-label class="ion-text-wrap">
+                      <p><strong>Condulta terapêutica:</strong></p>
+                      <p>{{h.conduta}}</p>
+                    </ion-label>
+                  </ion-item>
+
+                  <ion-item lines="none">
+                    <ion-label class="ion-text-wrap">
+                      <p><strong>Encaminhamentos:</strong></p>
+                      <ion-badge mode="ios">Enc1</ion-badge>
+                      <ion-badge mode="ios">Enc2</ion-badge>
+                    </ion-label>
+                  </ion-item>
+
+                  <ion-item lines="none">
+                    <ion-label class="ion-text-wrap">
+                      <p><strong>Recomendação de alimentação personalizada:</strong></p>
+                      <ion-badge mode="ios">Rec1</ion-badge>
+                      <ion-badge mode="ios">Rec2</ion-badge>
+                    </ion-label>
+                  </ion-item>
+
+                  <ion-item lines="none">
+                    <ion-label class="ion-text-wrap">
+                      <p><strong>Recomendação de atividades personalizada:</strong></p>
+                      <ion-badge mode="ios">Rec1</ion-badge>
+                      <ion-badge mode="ios">Rec2</ion-badge>
+                    </ion-label>
+                  </ion-item>
+
+                  <ion-item lines="none">
+                    <ion-label class="ion-text-wrap">
+                      <p><strong>Recomendação de conteúdos personalizada:</strong></p>
+                      <ion-badge mode="ios">Rec1</ion-badge>
+                      <ion-badge mode="ios">Rec2</ion-badge>
+                    </ion-label>
+                  </ion-item>
+
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+          <!--hoje-->
+
+          <div *ngIf="i == 'exames'">
+
+          </div>
+          <!--hoje-->
+
+          <div *ngIf="i == 'biosensores'">
+
+          </div>
+          <!--hoje-->
+
+          <div *ngIf="i == 'autocuidado'">
+
+          </div>
+          <!--hoje-->
+
+          <div *ngIf="i == 'familia'">
+
+          </div>
+          <!--hoje-->
+
+          <div *ngIf="i == 'opinioes'">
+
+          </div>
+          <!--hoje-->
+
+        </div> <!-- container-->
+
+      </ion-card>
+    </div>
+
+
+
+  </div>
+  <!--Wrap box-->
+
+</ion-content>

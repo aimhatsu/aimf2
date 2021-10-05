@@ -1,0 +1,256 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="toolbar-bg">
+      <ion-title>
+        <img src="../../assets/images/mia-wht.png" width="200" alt="" />
+      </ion-title>
+
+      <ion-buttons slot="end" class="ion-text-right">
+        <app-user-bar></app-user-bar>
+      </ion-buttons>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div wrap-box>
+    <ion-grid class="ion-no-padding">
+      <ion-row class="sub-toolbar">
+        <ion-col size="8">
+          <h1>TODOS OS PACIENTES</h1>
+          <p>Gerenciamento todos os seus pacientes em um único lugar</p>
+        </ion-col>
+
+        <!-- <ion-col size="3">
+          <ion-item lines="none" class="search-bar">
+            <ion-input class="search-input" type="text" placeholder="Digite o CPF do novo paciente">
+              <ion-icon class="searchbar-icon" ios="ios-search" md="md-search"></ion-icon>
+            </ion-input>
+          </ion-item>
+        </ion-col> -->
+
+        <ion-col size="4">
+     
+      <ion-item lines="none" class="search-bar">
+            <ion-input class="search-input" type="text" placeholder="Pesquise pacientes por nome ou CPF..."
+                 (ionChange)="searchPatient($event)">
+              <ion-icon class="searchbar-icon" ios="ios-search" md="md-search"></ion-icon>
+            </ion-input>
+          </ion-item>
+      
+    
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-slides>
+      <ion-slide>
+        <ion-card style="margin-left: 0px" class="card-stats">
+          <ion-row>
+            <ion-col size-md="3" size-sm="3" size-xs="3" size-lg="3">
+              <ion-label class="ion-text-center" color="primary">
+                <h1 style="margin-top: 20px; font-size: 22px">
+                  <strong>2,108 {{totalpati}}</strong>
+                </h1>
+                <p style="color: #9f9c9c !important; font-size: 12px">
+                  Pacientes
+                </p>
+              </ion-label>
+            </ion-col>
+
+            <ion-col
+              size-md="2"
+              size-sm="2"
+              size-lg="2"
+              size-xs="2"
+              style="text-align: center"
+            >
+              <circle-progress
+                percent="{{geralpoint}}"
+                [clockwise]="false"
+                [showTitle]="true"
+                [showSubtitle]="false"
+                [space]="-10"
+                [radius]="28"
+                [outerStrokeWidth]="10"
+                [innerStrokeWidth]="10"
+                [outerStrokeColor]="'#2694A3'"
+                [titleColor]="'#2694A3'"
+                [innerStrokeColor]="'#e7e8ea'"
+                [animation]="true"
+                [animationDuration]="300"
+                [showUnits]="false"
+              ></circle-progress>
+            </ion-col>
+
+            <ion-col size-md="2.5" size-sm="2.5" size-lg="2.5" size-xs="2.5">
+              <h4 style="color: #2694a3" class="h4-stats" *ngIf="geralpoint">
+                <strong
+                  >{{geralpoint}} MEUS <br />
+                  PACIENTES</strong
+                >
+              </h4>
+            </ion-col>
+
+            <ion-col
+              size-md="2"
+              size-sm="2"
+              size-lg="2"
+              size-xs="2"
+              style="text-align: center"
+            >
+              <circle-progress
+                percent="{{globalpoint}}"
+                [clockwise]="false"
+                [showTitle]="true"
+                [showSubtitle]="false"
+                [space]="-10"
+                [radius]="28"
+                [outerStrokeWidth]="10"
+                [innerStrokeWidth]="10"
+                [outerStrokeColor]="'#EF9C92'"
+                [titleColor]="'#EF9C92'"
+                [innerStrokeColor]="'#e7e8ea'"
+                [animation]="true"
+                [animationDuration]="300"
+                [showUnits]="false"
+              ></circle-progress>
+            </ion-col>
+
+            <ion-col size-md="2.5" size-sm="2.5" size-lg="2.5" size-xs="2.5">
+              <h4 style="color: #ef9c92" class="h4-stats" *ngIf="globalpoint">
+                <strong
+                  >POPULAÇÃO <br />
+                  GLOBAL</strong
+                >
+              </h4>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-slide>
+
+      <ion-slide>
+        <ion-card class="card-stats">
+          <ion-grid class="ion-no-padding">
+            <ion-row>
+              <ion-col size="3">
+                <ion-item lines="none" style="border-right: 1px solid #999999">
+                  <ion-label class="ion-text-center" color="secondary">
+                    <ion-icon class="icon-stats" name="sad"></ion-icon>
+                    <h2>54 {{instaveis}}</h2>
+                    <p class="p-stats">INSTÁVEIS</p>
+                  </ion-label>
+                </ion-item>
+              </ion-col>
+
+              <ion-col size="3">
+                <ion-item lines="none" style="border-right: 1px solid #999999">
+                  <ion-label class="ion-text-center" color="secondary">
+                    <ion-icon
+                      class="icon-stats"
+                      name="phone-portrait"
+                    ></ion-icon>
+                    <h2>321 {{inativos}}</h2>
+                    <p class="p-stats">INATIVOS</p>
+                  </ion-label>
+                </ion-item>
+              </ion-col>
+
+              <ion-col size="3">
+                <ion-item lines="none" style="border-right: 1px solid #999999">
+                  <ion-label class="ion-text-center" color="primary">
+                    <ion-icon class="icon-stats" name="logo-rss"></ion-icon>
+                    <h2>{{bioconectados || 0}}</h2>
+                    <p class="p-stats">BIOCONECTADOS</p>
+                  </ion-label>
+                </ion-item>
+              </ion-col>
+
+              <ion-col size="3">
+                <ion-item lines="none">
+                  <ion-label class="ion-text-center" color="primary">
+                    <ion-icon class="icon-stats" name="happy"></ion-icon>
+                    <h2>1.300{{estaveis}}</h2>
+                    <p class="p-stats">ESTÁVEIS</p>
+                  </ion-label>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col sizeLg="4" sizeMd="6" sizeXs="12" *ngFor="let item of pacientes">
+          <ion-card class="slide-card">
+            <ion-row>
+              <ion-col size="3">
+                <img class="slide-img" src="../../assets/images/person.png" />
+              </ion-col>
+
+              <ion-col size="9">
+                <h4 class="h4-slide">
+                  <strong>{{item.nome}} {{item.snome}}</strong>
+                </h4>
+                <p class="p-slide-title">Historic 360</p>
+                <p class="p-slide-subtitle">Última análise em:</p>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="12">
+                <img
+                  (click)="get_emot()"
+                  class="mind-img"
+                  src="../../assets/images/mind-icon.png"
+                />
+                <img
+                  (click)="get_corpo()"
+                  class="body-img"
+                  src="../../assets/images/body-icon.png"
+                />
+                <img
+                  (click)="get_mente()"
+                  class="emot-img"
+                  src="../../assets/images/emot-icon.png"
+                />
+                <canvas *ngIf="item" 
+                  style="margin-top: 45px"
+                  width="300"
+                  height="320"
+                  id="id{{item?._id.$oid}}"
+                  responsive="true"
+                ></canvas>
+              </ion-col>
+            </ion-row>
+
+            <ion-row style="margin-top: -12%">
+              <ion-col size="12" style="padding: 0px">
+                <ion-button
+                  (click)="openProntuario(item, 'body')"
+                  class="slide-btn"
+                  expand="block"
+                  color="secondary"
+                >
+                  <ion-icon
+                    style="color: #00000042"
+                    slot="start"
+                    name="heart"
+                  ></ion-icon>
+                  <p>PRONTUÁRIO</p>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <!-- /wrap -->
+
+  <ion-infinite-scroll (ionInfinite)="loadNextPage($event)" loadingSpinner="bubbles" loadingText="Carregando Pacientes...">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

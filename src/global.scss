@@ -1,0 +1,181 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+.sub-toolbar{
+    h1{
+      color: #2694a3;
+      font-weight: bold;
+	}
+	p{
+		font-size: 12px;
+	}
+  }
+
+  h1, p{
+    margin: 0; padding: 0;
+  }
+
+[wrap-box]{
+	max-width: 1200px;
+	margin-left: auto; margin-right: auto;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #eee;
+}
+ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+p,h1,h2,h3,h4,h5,h6{
+	margin: 0;
+	padding: 0;
+}
+a:hover{
+	text-decoration: none;
+}
+button:focus {
+	outline: none !important;
+}
+label {
+	margin-bottom: inherit;
+}
+@font-face {
+  font-family: Calibri-Regular;
+  src: url(./assets/fonts/Calibri-Regular.ttf);
+}
+@font-face {
+  font-family: Calibri-Bold;
+  src: url(./assets/fonts/Calibri-Bold.ttf);
+}
+@font-face {
+  font-family: segoe-ui-bold;
+  src: url(./assets/fonts/segoe-ui-bold.ttf);
+}
+@font-face {
+  font-family: segoe-ui-regular;
+  src: url(./assets/fonts/segoe-ui-regular.ttf);
+}
+@font-face {
+  font-family: RiftSoft-Demi;
+  src: url(./assets/fonts/RiftSoft-Demi.otf);
+}
+@font-face {
+  font-family: RiftSoft-Medium;
+  src: url(./assets/fonts/RiftSoft-Medium.otf);
+}
+
+/*Login Pages*/
+/*Login Pages*/
+.user-login-area {
+	background: url(./assets/images/background.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
+	background-position: 80% 0%;
+}
+.user-login-area:after {
+	content: "";
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(38, 148, 163, .5);
+}
+.single-user-area {
+	position: relative;
+	z-index: 22;
+	background: rgba(0, 0, 0, .25);
+	width: 400px;
+	margin: auto;
+	height: 100vh;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: center;
+	padding-left: 35px;
+	padding-right: 25px;
+}
+.login-email {
+	margin-bottom: 25px;
+}
+.login-email i, .login-password i {
+	position: absolute;
+	left: 44px;
+	margin-top: 5px;
+	color: #ddd;
+	font-size: 14px;
+}
+.login-email input, .login-password input {
+	background: transparent;
+	border: none;
+	border-bottom: 2px solid #ddd;
+	width: 100%;
+	padding: 0px 35px;
+	padding-bottom: 8px;
+	font-family: Calibri-Regular;
+	font-size: 16px;
+	color: #fff;
+	outline: none;
+}
+.login-email input::placeholder, .login-password input::placeholder {
+	font-family: Calibri-Regular;
+	color: #fff;
+	font-size: 16px;
+	opacity: 1;
+}
+
+.privacy-area {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	margin-top: 120px;
+}
+.privacy-area p {
+	font-family: Calibri-Regular;
+	color: #fff;
+	font-size: 14px;
+	margin-right: 15px;
+}
+.privacy-area a {
+	font-family: Calibri-Bold;
+	text-transform: uppercase;
+	color: #F1B4AE;
+	font-size: 18px;
+	transition: 1s;
+}
+.privacy-area a:hover {
+	color: #00ACC4;
+}
+ion-title {
+	padding: 0px;
+}

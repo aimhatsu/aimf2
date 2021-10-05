@@ -1,0 +1,521 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="toolbar-bg">
+      <ion-title>
+        <img src="../../assets/images/mia-wht.png" width="200" alt="">
+      </ion-title>
+
+      <ion-buttons slot="end" class="ion-text-right">
+        <app-user-bar>
+        </app-user-bar>
+      </ion-buttons>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div wrap-box>
+    <ion-grid>
+      <ion-row class="sub-toolbar">
+        <ion-col size="8">
+          <h1>PACIENTES</h1>
+          <p>Visão geral de um paciente</p>
+        </ion-col>
+
+        <ion-col size="4">
+          <ion-item lines="none" class="search-bar">
+            <ion-input class="search-input" type="text" placeholder="Pesquise pacientes por nome ou CPF...">
+              <ion-icon class="searchbar-icon" ios="ios-search" md="md-search"></ion-icon>
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6">
+          <ion-card style="margin-left: 0px;" class="card-stats">
+            <ion-row>
+              <ion-col size="3">
+                <ion-item style="margin-top: 8px;" lines="none">
+                  <ion-label class="ion-text-center" color="primary">
+                    <h1><strong>2,108{{totalpati}}</strong></h1>
+                    <p style="color:#9F9C9C !important; font-size: 12px;">Pacientes</p>
+                  </ion-label>
+                </ion-item>
+              </ion-col>
+
+              <ion-col size="2.5" style="text-align: center;">
+                <circle-progress percent="{{geralpoint}}" [clockwise]=false [showTitle]=true [showSubtitle]=false
+                  [space]=-10 [radius]="28" [outerStrokeWidth]="10" [innerStrokeWidth]="10"
+                  [outerStrokeColor]="'#2694A3'" [titleColor]="'#2694A3'" [innerStrokeColor]="'#e7e8ea'"
+                  [animation]="true" [animationDuration]="300" [showUnits]=false></circle-progress>
+              </ion-col>
+
+              <ion-col size="2">
+                <h4 style="color: #2694A3" class="h4-stats" *ngIf="geralpoint"><strong>{{geralpoint}} MEUS <br>
+                    PACIENTES</strong></h4>
+              </ion-col>
+
+              <ion-col size="2.5" style="text-align: center;">
+                <circle-progress percent="{{globalpoint}}" [clockwise]=false [showTitle]=true [showSubtitle]=false
+                  [space]=-10 [radius]="28" [outerStrokeWidth]="10" [innerStrokeWidth]="10"
+                  [outerStrokeColor]="'#EF9C92'" [titleColor]="'#EF9C92'" [innerStrokeColor]="'#e7e8ea'"
+                  [animation]="true" [animationDuration]="300" [showUnits]=false></circle-progress>
+              </ion-col>
+
+              <ion-col size="2">
+                <h4 style="color: #EF9C92" class="h4-stats" *ngIf="globalpoint"><strong>POPULAÇÃO <br> GLOBAL</strong>
+                </h4>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-card style="margin-right: 0px;" class="card-stats">
+            <ion-row>
+              <ion-col size="3">
+                <ion-item lines="none" style="border-right: 1px solid #999999;">
+                  <ion-label class="ion-text-center" color="secondary">
+                    <ion-icon class="icon-stats" name="sad"></ion-icon>
+                    <h2>54 {{instaveis}}</h2>
+                    <p class="p-stats">INSTÁVEIS</p>
+                  </ion-label>
+                </ion-item>
+              </ion-col>
+
+              <ion-col size="3">
+                <ion-item lines="none" style="border-right: 1px solid #999999;">
+                  <ion-label class="ion-text-center" color="secondary">
+                    <ion-icon class="icon-stats" name="phone-portrait"></ion-icon>
+                    <h2>321 {{inativos}}</h2>
+                    <p class="p-stats">INATIVOS</p>
+                  </ion-label>
+                </ion-item>
+              </ion-col>
+
+              <ion-col size="3">
+                <ion-item lines="none" style="border-right: 1px solid #999999;">
+                  <ion-label class="ion-text-center" color="primary">
+                    <ion-icon class="icon-stats" name="logo-rss"></ion-icon>
+                    <h2>{{bioconectados || 0}}</h2>
+                    <p class="p-stats">BIOCONECTADOS</p>
+                  </ion-label>
+                </ion-item>
+              </ion-col>
+
+              <ion-col size="3">
+                <ion-item lines="none">
+                  <ion-label class="ion-text-center" color="primary">
+                    <ion-icon class="icon-stats" name="happy"></ion-icon>
+                    <h2>1.200{{estaveis}}</h2>
+                    <p class="p-stats">ESTÁVEIS</p>
+                  </ion-label>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-card class="ion-no-padding ion-no-margin card-style">
+      <ion-card-header style="padding: 0px;">
+        <ion-row>
+          <ion-col size="2" style="padding: 0px;">
+            <ion-item class="card-heading" lines="none">
+              <ion-icon class="icon-header" slot="start" name="heart"></ion-icon>
+              <ion-label class="ion-text-center label-item" color="light">
+                PRONTUARIO
+              </ion-label>
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="10">
+
+          </ion-col>
+        </ion-row>
+      </ion-card-header>
+
+      <ion-card-content style="padding: 0px;">
+        <div class="segment-bg">
+          <ion-segment color="primary" (ionChange)="segmentChange($event)" [(ngModel)]="tab">
+            <ion-segment-button value="hoje">Hoje</ion-segment-button>
+            <ion-segment-button value="historico">Histórico</ion-segment-button>
+            <ion-segment-button value="exames">Exames</ion-segment-button>
+            <ion-segment-button value="biosensores">Biosensores</ion-segment-button>
+            <ion-segment-button value="autocuidado">Autocuidado</ion-segment-button>
+            <ion-segment-button value="familia">Família</ion-segment-button>
+            <ion-segment-button value="opinioes">Opiniões</ion-segment-button>
+          </ion-segment>
+        </div>
+
+        <!-- Hoje -->
+        <div *ngIf="tab == 'hoje'">
+          <ion-row>
+            <ion-col size="3">
+              <ion-row>
+                <ion-col size="3">
+                  <img class="hoje-person-img" src="../../assets/images/person.png">
+                </ion-col>
+
+                <ion-col size="9">
+                  <h4 class="h4-hoje">
+                    <!-- <strong>ID: {{'*******************'+(slide_Uid | slice:20:24)}}</strong> -->
+                    <strong>JOSÉ ANACLETO</strong>
+                  </h4>
+                  <p class="p-hoje-title">Histórico 360º</p>
+                  <p class="p-hoje-subtitle">Última análise às 5:37 PM, hoje</p>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col size="4" (click)="loadHoje('corpo')">
+                  <img class="hoje-bottom-imgs" src="../../assets/images/body-icon.png">
+                  <p style="text-align: center;">Corpo</p>
+                </ion-col>
+
+                <ion-col size="4" (click)="loadHoje('doshas')">
+                  <img class="hoje-bottom-imgs" src="../../assets/images/emot-icon.png">
+                  <p style="text-align: center;">Doshas</p>
+                </ion-col>
+
+                <ion-col size="4" (click)="loadHoje('gestalt')">
+                  <img class="hoje-bottom-imgs" src="../../assets/images/emot-icon.png">
+                  <p style="text-align: center;">Gestalt</p>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col size="4" (click)="loadHoje('mente')">
+                  <img class="hoje-bottom-imgs" src="../../assets/images/mind-icon.png">
+                  <p style="text-align: center;">Mente</p>
+                </ion-col>
+
+                <ion-col size="4" (click)="loadHoje('chakras')">
+                  <img class="hoje-bottom-imgs" src="../../assets/images/chakra-icon.png">
+                  <p style="text-align: center;">Chakras</p>
+                </ion-col>
+
+                <ion-col size="4">
+
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col size="4" (click)="loadHoje('emocoes')">
+                  <img class="hoje-bottom-imgs" src="../../assets/images/emot-icon.png">
+                  <p style="text-align: center;">Emoções</p>
+                </ion-col>
+
+                <ion-col size="4" (click)="loadHoje('yinyang')">
+                  <img class="hoje-bottom-imgs" src="../../assets/images/emot-icon.png">
+                  <p style="text-align: center;">Yin Yang</p>
+                </ion-col>
+
+                <ion-col size="4">
+
+                </ion-col>
+              </ion-row>
+            </ion-col>
+
+            <ion-col size="8">
+              <ion-row>
+                <ion-col size="12" style="padding-top: 25px;">
+                  <h2 class="pront-headings">
+                    <strong>DADOS DO CORPO</strong>
+                  </h2>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col size="12">
+                  <canvas id="prontChart" class="pront-style" width="200" height="220" responsive="true"></canvas>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+
+            <ion-col size="1">
+              <ion-row>
+                <ion-col size="12">
+                  <ion-badge color="primary">01/01/2020</ion-badge>
+                  <br>
+                  <ion-badge color="secondary">01/01/2020</ion-badge>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </div>
+
+        <!-- Historico -->
+        <div *ngIf="tab == 'historico'">
+          <ion-row>
+            <ion-col size="3">
+              <ion-row>
+                <ion-col size="3">
+                  <img class="hoje-person-img" src="../../assets/images/person.png">
+                </ion-col>
+
+                <ion-col size="9">
+                  <h4 class="h4-hoje">
+                    <!-- <strong>ID: {{'*******************'+(slide_Uid | slice:20:24)}}</strong> -->
+                    <strong>JOSÉ ANACLETO</strong>
+                  </h4>
+                  <p class="p-hoje-title">Histórico 360º</p>
+                  <p class="p-hoje-subtitle">Última análise às 5:37 PM, hoje</p>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+
+            <ion-col size="9" class="col-left-historic">
+              <ion-row>
+                <ion-col size="10" class="col-bottom-historic" style="padding-top: 50px;">
+                  <h2 class="pront-headings">
+                    <strong>HISTÓRICO DE ATENDIMENTOS</strong>
+                  </h2>
+                </ion-col>
+
+                <ion-col size="2">
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size="3" style="padding: 0px;">
+              <ion-row>
+                <ion-col size="4" style="padding: 0px;">
+                  <p class="historic-p-year">2019</p>
+                  <img class="date-slot-img" src="../../assets/images/date-slot.png">
+                </ion-col>
+
+                <ion-col size="8" style="padding: 8px 0px 0px 0px;">
+                  <p class="historic-p-date">Outubro</p>
+                  <hr>
+                  <p class="historic-p-date">Dia 25, 15:22</p>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+
+            <ion-col size="9" class="col-left-historic">
+              <ion-row class="heading-bg-dark">
+                <ion-label>
+                  <p style="padding: 10px;"><strong>SERVICO: ACUPULTURA</strong>
+                  </p>
+                </ion-label>
+              </ion-row>
+
+              <ion-row style="margin-left: 10px;">
+                <p><strong>Exames presenciais:</strong></p>
+              </ion-row>
+
+              <ion-row style="margin-left: 10px;">
+                <ion-badge style="margin-right: 1%;" color="primary">Mamografia</ion-badge>
+                <ion-badge color="primary">Estetoscopia</ion-badge>
+              </ion-row>
+
+              <ion-row style="margin-left: 10px;">
+                <p><strong>Diagnose clínica:</strong></p>
+              </ion-row>
+
+              <ion-row style="margin-left: 10px;">
+                <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</p>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size="3" style="padding: 0px;">
+              <ion-row>
+                <ion-col size="4" style="padding: 0px;">
+                  <p class="historic-p-year">2019</p>
+                  <img class="date-slot-img" src="../../assets/images/date-slot.png">
+                </ion-col>
+
+                <ion-col size="8" style="padding: 8px 0px 0px 0px;">
+                  <p class="historic-p-date">Setembro</p>
+                  <hr>
+                  <p class="historic-p-date">Dia 25, 15:22</p>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+
+            <ion-col size="9" class="col-left-historic">
+              <ion-row class="heading-bg-dark">
+                <ion-label>
+                  <p style="padding: 10px;"><strong>SERVICO: ACUPULTURA</strong>
+                  </p>
+                </ion-label>
+              </ion-row>
+
+              <ion-row style="margin-left: 10px;">
+                <p><strong>Exames presenciais:</strong></p>
+              </ion-row>
+
+              <ion-row style="margin-left: 10px;">
+                <ion-badge style="margin-right: 1%;" color="primary">Mamografia</ion-badge>
+                <ion-badge color="primary">Estetoscopia</ion-badge>
+              </ion-row>
+
+              <ion-row style="margin-left: 10px;">
+                <p><strong>Diagnose clínica:</strong></p>
+              </ion-row>
+
+              <ion-row style="margin-left: 10px;">
+                <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</p>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </div>
+
+        <!-- Autocuidado -->
+        <div *ngIf="tab == 'autocuidado'">
+          <ion-row>
+            <ion-col size="3">
+              <ion-row>
+                <ion-col size="3">
+                  <img class="hoje-person-img" src="../../assets/images/person.png">
+                </ion-col>
+
+                <ion-col size="9">
+                  <h4 class="h4-hoje">
+                    <!-- <strong>ID: {{'*******************'+(slide_Uid | slice:20:24)}}</strong> -->
+                    <strong>JOSÉ ANACLETO</strong>
+                  </h4>
+                  <p class="p-hoje-title">Histórico 360º</p>
+                  <p class="p-hoje-subtitle">Última análise às 5:37 PM, hoje</p>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+
+            <ion-col size="9">
+              <ion-row>
+                <ion-col size="12" style="padding-top: 25px;">
+                  <h2 class="pront-headings">
+                    <strong>FATORES DE RISCO DO AUTOCUIDADO</strong>
+                  </h2>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size="12">
+              <ion-row class="ion-align-items-center">
+                <ion-col size="1">
+                  <ion-item lines="none">
+                    <ion-avatar>
+                      <img src="../../assets/images/img2.jpeg" alt="">
+                    </ion-avatar>
+                  </ion-item>
+                </ion-col>
+
+                <ion-col size="11">
+                  <div class="bar">
+                    <div class="bar-1" [ngStyle]="{'width':'33%'}">33</div>
+                    <div class="bar-2" [ngStyle]="{'width':'33%'}">33</div>
+                    <div class="bar-3" [ngStyle]="{'width':'33%'}">33</div>
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="ion-align-items-center">
+                <ion-col size="1">
+                  <ion-item lines="none">
+                    <ion-avatar>
+                      <img src="../../assets/images/img5.jpeg" alt="">
+                    </ion-avatar>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="11">
+                  <div class="bar">
+                    <div class="bar-1" [ngStyle]="{'width':'50%'}">50</div>
+                    <div class="bar-2" [ngStyle]="{'width':'25%'}">25</div>
+                    <div class="bar-3" [ngStyle]="{'width':'25%'}">25</div>
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="ion-align-items-center">
+                <ion-col size="1">
+                  <ion-item lines="none">
+                    <ion-avatar>
+                      <img src="../../assets/images/img1.jpeg" alt="">
+                    </ion-avatar>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="11">
+                  <div class="bar">
+                    <div class="bar-1" [ngStyle]="{'width':'75%'}">75</div>
+                    <div class="bar-2" [ngStyle]="{'width':'5%'}">5</div>
+                    <div class="bar-3" [ngStyle]="{'width':'20%'}">20</div>
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="ion-align-items-center">
+                <ion-col size="1">
+                  <ion-item lines="none">
+                    <ion-avatar>
+                      <img src="../../assets/images/img3.jpeg" alt="">
+                    </ion-avatar>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="11">
+                  <div class="bar">
+                    <div class="bar-1" [ngStyle]="{'width':'35%'}">35</div>
+                    <div class="bar-2" [ngStyle]="{'width':'35%'}">35</div>
+                    <div class="bar-3" [ngStyle]="{'width':'30%'}">30</div>
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="ion-align-items-center">
+                <ion-col size="1">
+                  <ion-item lines="none">
+                    <ion-avatar>
+                      <img src="../../assets/images/img4.jpeg" alt="">
+                    </ion-avatar>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="11">
+                  <div class="bar">
+                    <div class="bar-1" [ngStyle]="{'width':'33%'}">33</div>
+                    <div class="bar-2" [ngStyle]="{'width':'33%'}">33</div>
+                    <div class="bar-3" [ngStyle]="{'width':'33%'}">33</div>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+
+
+<ion-tab-bar slot="bottom" class="tabs-bg">
+  <ion-row style="width: 100%;">
+    <ion-col size="4">
+      <ion-tab-button tab="dashboard" (click)="openPage('/tabs/dashboard')" class="tabs-btn">
+        <ion-icon name="pulse"></ion-icon>
+        <ion-label>Dashboard</ion-label>
+      </ion-tab-button>
+    </ion-col>
+
+    <ion-col size="4">
+      <ion-tab-button tab="pacientes" (click)="openPage('/tabs/pacientes')" class="tabs-btn">
+        <ion-icon name="happy"></ion-icon>
+        <ion-label>Pacientes</ion-label>
+      </ion-tab-button>
+    </ion-col>
+
+    <ion-col size="4">
+      <ion-tab-button tab="data" (click)="openPage('/tabs/data')" class="tabs-btn">
+        <ion-icon name="cloud-outline"></ion-icon>
+        <ion-label>Data</ion-label>
+      </ion-tab-button>
+    </ion-col>
+  </ion-row>
+</ion-tab-bar>

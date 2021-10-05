@@ -1,0 +1,133 @@
+<ion-content>
+  <section class="user-login-area bg-style">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="single-user-area back-shadow">
+            <div class="login-area">
+              <div class="ion-text-center">
+                <img src="../../assets/images/mia-wht.png">
+                <br><br>
+              </div>
+
+              <ion-item color="transparent">
+                <ion-icon class="side-icon" slot="start" name="person"></ion-icon>
+                <ion-label>
+                  Especialidade
+                </ion-label>
+                <ion-input type="text" [(ngModel)]="info.especialidade"></ion-input>
+              </ion-item>
+              <br>
+              <ion-item color="transparent">
+                <ion-icon class="side-icon" slot="start" name="person"></ion-icon>
+                <ion-label>
+                  Registro
+                </ion-label>
+                <ion-input type="text" [(ngModel)]="info.registro"></ion-input>
+              </ion-item>
+              <br>
+              <ion-item color="transparent">
+                <ion-icon class="side-icon" slot="start" name="person"></ion-icon>
+                <ion-label>
+                  CPF ou CNPJ
+                </ion-label>
+                <ion-input type="email" [(ngModel)]="info.cpf"></ion-input>
+              </ion-item>
+              <br>
+              <ion-item color="transparent">
+                <ion-icon class="side-icon" slot="start" name="person"></ion-icon>
+                <ion-label>
+                  Nome
+                </ion-label>
+                <ion-input type="text" [(ngModel)]="info.nome"></ion-input>
+              </ion-item>
+              <br>
+              <ion-item color="transparent">
+                <ion-icon class="side-icon" slot="start" name="person"></ion-icon>
+                <ion-label>
+                  Sobrenome
+                </ion-label>
+                <ion-input type="text" [(ngModel)]="info.sobrenome"></ion-input>
+              </ion-item>
+              <br>
+              <ion-item color="transparent">
+                <ion-icon class="side-icon" slot="start" name="person"></ion-icon>
+                <ion-label>
+                  WhatsApp
+                </ion-label>
+                <ion-input type="text" [(ngModel)]="info.whatsapp"></ion-input>
+              </ion-item>
+              <br>
+              <ion-item color="transparent">
+                <ion-icon class="side-icon" slot="start" name="person"></ion-icon>
+                <ion-label>
+                  E-mail
+                </ion-label>
+                <ion-input type="text" [(ngModel)]="info.email"></ion-input>
+              </ion-item>
+              <br>
+              <ion-item color="transparent">
+                <ion-icon class="side-icon" slot="start" name="home"></ion-icon>
+                <ion-label>
+                  CEP
+                </ion-label>
+                <ion-input type="tel" (keyup)="cepInput(info.cep)" [(ngModel)]="info.cep"></ion-input>
+              </ion-item>
+              <br>
+              <ion-item color="transparent">
+                <ion-icon class="side-icon" slot="start" name="home"></ion-icon>
+                <ion-label>
+                  Estado
+                </ion-label>
+                <ion-input type="text" [(ngModel)]="info.estado"></ion-input>
+              </ion-item>
+              <br>
+              <ion-item color="transparent">
+                <ion-icon class="side-icon" slot="start" name="home"></ion-icon>
+                <ion-label>
+                  Cidade
+                </ion-label>
+                <ion-input type="text" [(ngModel)]="info.cidade"></ion-input>
+              </ion-item>
+              <br>
+              <ion-item color="transparent">
+                <ion-icon class="side-icon" slot="start" name="home"></ion-icon>
+                <ion-label>
+                  Endereço
+                </ion-label>
+                <ion-input type="text" [(ngModel)]="info.endereco"></ion-input>
+              </ion-item>
+              <br>
+              <ion-item color="transparent">
+                <ion-icon class="side-icon" slot="start" name="lock"></ion-icon>
+                <ion-label>
+                  Senha
+                </ion-label>
+                <ion-input type="password" [(ngModel)]="info.password"></ion-input>
+              </ion-item>
+              <br>
+              <ion-item color="transparent">
+                <ion-icon class="side-icon" slot="start" name="lock"></ion-icon>
+                <ion-label>
+                  Confirmar senha
+                </ion-label>
+                <ion-input type="password" [(ngModel)]="info.confirm_password"></ion-input>
+              </ion-item>
+              <p class="form-error" *ngIf="isMatch">senha incorreta</p>
+              <br>
+
+              <ion-button expand="block" shape="round" color="light" (click)="doRegister()">
+                <span *ngIf="!isLoading">CADASTRAR</span>
+                <ion-spinner *ngIf="isLoading" color="dark"></ion-spinner>
+              </ion-button>
+              <br>
+              <p class="term-style">Ao se cadastrar, você concorda com nossos <b routerLink="/agenda">Termos e Política de Privacidade</b></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</ion-content>

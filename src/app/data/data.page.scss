@@ -1,0 +1,123 @@
+.toolbar-bg{
+    background: transparent linear-gradient(264deg, #2694A3 0%, #01426A 100%) 0% 0% no-repeat padding-box !important;
+    box-shadow: 0px 3px 20px #00000059;
+    display: flex; 
+    margin: 0px;
+}
+
+.sub-toolbar{
+    margin-top: 18px !important;
+}
+
+ion-segment{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    
+    ion-segment-button{
+        color: #ced6e0 !important;
+    }
+
+    ion-segment-button.segment-button-checked {
+        color: #ffffff !important;
+        --indicator-height: 8px !important;
+    }
+
+    ion-segment-button.segment-button-indicator{
+        color: #EF9E95 !important;
+    }
+
+    div.segment-button-indicator{
+        --indicator-height: 8px !important;
+    }
+}
+
+.search-bar {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 2px 6px #00000029;
+    border-radius: 10px;
+}
+
+.searchbar-icon{
+    font-size: 22px;
+    color: #BCBCCB;
+    margin-right: 8px;
+}
+
+.search-input{
+    --placeholder-color: #43425D !important;
+}
+
+.data-card{
+    margin: 10px 10% 0px  10%;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 1px 6px 12px #00000031;
+    border-radius: 10px;
+
+}
+
+.question-div{
+    max-height: 0px;
+    overflow-y: hidden;
+    transition: ease-in-out 200ms max-height;
+}
+.question-div.opened {
+      max-height: 3000px;
+    transition: ease-in-out 600ms max-height;
+}
+.card-stats{
+ 
+    width: 80%;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.dropdown-icon{
+    color: #2694a3;
+}
+
+.item-bg-dark{
+    --background: #EEEEEE !important;
+    background: #EEEEEE !important;
+}
+
+.item-bg-darker{
+    --background: #C4C4C470 !important;
+    background: #C4C4C470 !important;
+}
+
+.item-bg-white{
+    --background: #ffffff !important;
+}
+
+.col-style{
+    padding: 5px 0px 5px 0px;
+    text-align: center;
+}
+
+.tab-options{
+    padding: 14px; 
+    width: 415px; 
+    height: 80px; 
+    background: rgb(240, 196, 192); 
+    position: absolute; 
+    right: 90px; 
+    bottom: 56px; 
+    border-top-left-radius: 35px; 
+    border-top-right-radius: 35px; 
+    border-bottom-left-radius: 35px;
+    box-shadow: 0px 5px 10px #00000029;
+}
+
+.tab-icon-imgs{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.tab-p-style{
+    color: #515151;
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 1.8px;
+}

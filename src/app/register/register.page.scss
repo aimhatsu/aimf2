@@ -1,0 +1,33 @@
+.bg-style{
+    height: 180% !important;
+}
+
+.back-shadow{
+    height: 0% !important;
+}
+
+.user-login-area:after {
+	content: "";
+	height: 180% !important;
+}
+
+ion-item{
+    --color: #ffffff;
+    --highlight-height: 0
+}
+
+.side-icon{
+    margin: 0px 8px 0px 0px;
+}
+
+.term-style{
+    margin-bottom: 5%;
+    color: #ffffff;
+    text-align: center;
+}
+
+.form-error{
+    font-size: 0.8rem;
+    color: red;
+    text-align: center;
+}

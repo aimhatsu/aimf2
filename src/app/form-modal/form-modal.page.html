@@ -1,0 +1,878 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-icon name="close" style="font-size: 1.5rem;" (click)="close()"></ion-icon>
+    </ion-buttons>
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Status/Biomark form -->
+  <div *ngIf="form_type == 'patologia'">
+    <form [formGroup]="statusForm">
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Estado clínico / Patologia:
+        </ion-label>
+        <ion-input type="text" formControlName="patolog"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Categoria da patologia:
+        </ion-label>
+        <ion-input type="text" formControlName="category"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Código CID:
+        </ion-label>
+        <ion-input type="text" formControlName="cid"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Modelo de formulário:
+        </ion-label>
+        <ion-input type="text" formControlName="type"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Código interno do formulário:
+        </ion-label>
+        <ion-input type="text" formControlName="form"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Parâmetro:
+        </ion-label>
+        <ion-input type="text" formControlName="parametro"></ion-input>
+      </ion-item>
+
+      <ion-button (click)="submitStatus(statusForm.value)" expand="block" color="secondary">
+        <p>Publicar</p>
+      </ion-button>
+    </form>
+  </div>
+
+  <div *ngIf="form_type == 'biomark'">
+    <form [formGroup]="biomarkForm">
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Estado Clínico / Patologia:
+        </ion-label>
+        <ion-input type="text" formControlName="status"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Categoria:
+        </ion-label>
+        <ion-input type="text" formControlName="category"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Referência 1:
+        </ion-label>
+        <ion-input type="text" formControlName="ref1"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Referência 2:
+        </ion-label>
+        <ion-input type="text" formControlName="ref2"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Referência 3:
+        </ion-label>
+        <ion-input type="text" formControlName="ref3"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Referência 4:
+        </ion-label>
+        <ion-input type="text" formControlName="ref4"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Referência 5:
+        </ion-label>
+        <ion-input type="text" formControlName="ref5"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Imagem de Referência:
+        </ion-label>
+        <ion-input type="text" formControlName="imgref"></ion-input>
+      </ion-item>
+
+      <ion-button (click)="submitBiomark(biomarkForm.value)" expand="block" color="secondary">
+        <p>Publicar</p>
+      </ion-button>
+    </form>
+  </div>
+  <!-- Status/Biomark form End -->
+
+  <!-- Tratamento -->
+  <div *ngIf="form_type == 'tratamento'">
+    <form [formGroup]="tratamentoForm">
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Estado Clínico / Patologia:
+        </ion-label>
+        <ion-input type="text" formControlName="status"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Categoria:
+        </ion-label>
+        <ion-input type="text" formControlName="category"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Ordem:
+        </ion-label>
+        <ion-input type="text" formControlName="ordem"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Upload de arquivo:
+        </ion-label>
+        <ion-input type="text" formControlName="arquivo"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Link do vídeo:
+        </ion-label>
+        <ion-input type="text" formControlName="video"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Tratamento:
+        </ion-label>
+        <ion-input type="text" formControlName="tratamento"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Duração:
+        </ion-label>
+        <ion-input type="text" formControlName="duracao"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Título 1:
+        </ion-label>
+        <ion-input type="text" formControlName="title1"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Texto 1:
+        </ion-label>
+        <ion-input type="text" formControlName="text1"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Título 2:
+        </ion-label>
+        <ion-input type="text" formControlName="title2"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Texto 2:
+        </ion-label>
+        <ion-input type="text" formControlName="text2"></ion-input>
+      </ion-item>
+
+      <ion-button (click)="submitTratamento(tratamentoForm.value)" expand="block" color="secondary">
+        <p>Publicar</p>
+      </ion-button>
+    </form>
+  </div>
+  <!-- Tratamento End -->
+
+  <!-- Content -->
+  <div *ngIf="form_type == 'content'">
+    <form [formGroup]="contentForm">
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Estado clínico / Patologia:
+        </ion-label>
+        <ion-input type="text" formControlName="status"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Categoria:
+        </ion-label>
+        <ion-input type="text" formControlName="category"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Ordem da Recomendação:
+        </ion-label>
+        <ion-input type="text" formControlName="ordem"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Upload de arquivo:
+        </ion-label>
+        <ion-input type="text" formControlName="arquivo"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Link do vídeo:
+        </ion-label>
+        <ion-input type="text" formControlName="video"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Descrição:
+        </ion-label>
+        <ion-input type="text" formControlName="conteudo"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Duração:
+        </ion-label>
+        <ion-input type="text" formControlName="duracao"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Título 1:
+        </ion-label>
+        <ion-input type="text" formControlName="title1"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Texto 1:
+        </ion-label>
+        <ion-input type="text" formControlName="text1"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Título 2:
+        </ion-label>
+        <ion-input type="text" formControlName="title2"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Texto 2:
+        </ion-label>
+        <ion-input type="text" formControlName="text2"></ion-input>
+      </ion-item>
+
+      <ion-button (click)="submitContent(contentForm.value)" expand="block" color="secondary">
+        <p>Publicar</p>
+      </ion-button>
+    </form>
+  </div>
+  <!-- Content End -->
+
+  <!-- Food -->
+  <div *ngIf="form_type == 'food'">
+    <form [formGroup]="foodForm">
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Status
+        </ion-label>
+        <ion-input type="text" formControlName="status"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Categoria:
+        </ion-label>
+        <ion-input type="text" formControlName="category"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Ordem:
+        </ion-label>
+        <ion-input type="text" formControlName="ordem"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Upload de arquivo:
+        </ion-label>
+        <ion-input type="text" formControlName="arquivo"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Link do vídeo:
+        </ion-label>
+        <ion-input type="text" formControlName="video"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Nome do alimento:
+        </ion-label>
+        <ion-input type="text" formControlName="alimento"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Quantidade:
+        </ion-label>
+        <ion-input type="text" formControlName="quantidade"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Unidade de Medida:
+        </ion-label>
+        <ion-input type="text" formControlName="medida"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Título 1:
+        </ion-label>
+        <ion-input type="text" formControlName="title1"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Texto 1:
+        </ion-label>
+        <ion-input type="text" formControlName="text1"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Título 2:
+        </ion-label>
+        <ion-input type="text" formControlName="title2"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Texto 2:
+        </ion-label>
+        <ion-input type="text" formControlName="text2"></ion-input>
+      </ion-item>
+
+      <ion-button (click)="submitFood(foodForm.value)" expand="block" color="secondary">
+        <p>Publicar</p>
+      </ion-button>
+    </form>
+  </div>
+  <!-- Food End -->
+
+  <!-- Activity -->
+  <div *ngIf="form_type == 'activity'">
+    <form [formGroup]="activityForm">
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Status:
+        </ion-label>
+        <ion-input type="text" formControlName="status"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Categoria:
+        </ion-label>
+        <ion-input type="text" formControlName="category"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Ordem:
+        </ion-label>
+        <ion-input type="text" formControlName="ordem"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Arquivo:
+        </ion-label>
+        <ion-input type="text" formControlName="arquivo"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Link do vídeo:
+        </ion-label>
+        <ion-input type="text" formControlName="video"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Atividade:
+        </ion-label>
+        <ion-input type="text" formControlName="atividade"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Duração:
+        </ion-label>
+        <ion-input type="text" formControlName="duracao"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Título 1:
+        </ion-label>
+        <ion-input type="text" formControlName="title1"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Texto 1:
+        </ion-label>
+        <ion-input type="text" formControlName="text1"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Título 2:
+        </ion-label>
+        <ion-input type="text" formControlName="title2"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Texto 2:
+        </ion-label>
+        <ion-input type="text" formControlName="text2"></ion-input>
+      </ion-item>
+
+      <ion-button (click)="submitActivity(activityForm.value)" expand="block" color="secondary">
+        <p>Publicar</p>
+      </ion-button>
+    </form>
+  </div>
+  <!-- Activity End -->
+
+  <!-- Multiple Question form -->
+  <div *ngIf="form_type == 'multiple'">
+    <form [formGroup]="multipleForm">
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Categoria:
+        </ion-label>
+        <ion-input type="text" formControlName="category"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Nome do formulário:
+        </ion-label>
+        <ion-input type="text" formControlName="nform"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Código interno do formulário:
+        </ion-label>
+        <ion-input type="text" formControlName="formulario"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Ordem do formulário:
+        </ion-label>
+        <ion-input type="text" formControlName="fordem"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Escala / Nível:
+        </ion-label>
+        <ion-input type="text" formControlName="nivel"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Ordem:
+        </ion-label>
+        <ion-input type="text" formControlName="ordem"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Pergunta:
+        </ion-label>
+        <ion-input type="text" formControlName="pergunta"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Parâmetro:
+        </ion-label>
+        <ion-input type="text" formControlName="parametro"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Resposta 1:
+        </ion-label>
+        <ion-input type="text" formControlName="ans1"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Resposta 2:
+        </ion-label>
+        <ion-input type="text" formControlName="ans2"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Resposta 3:
+        </ion-label>
+        <ion-input type="text" formControlName="ans3"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Resposta 4:
+        </ion-label>
+        <ion-input type="text" formControlName="ans4"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Resposta 5:
+        </ion-label>
+        <ion-input type="text" formControlName="ans5"></ion-input>
+      </ion-item>
+
+      <ion-button (click)="submitMultiple(multipleForm.value)" expand="block" color="secondary">
+        <p>Publicar</p>
+      </ion-button>
+    </form>
+  </div>
+  <!-- Multiple Question form -->
+
+  <!-- Gestalt Question form -->
+  <div *ngIf="form_type == 'gestalt'">
+    <form [formGroup]="gestaltForm">
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Categoria:
+        </ion-label>
+        <ion-input type="text" formControlName="category"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Nome do Formulário:
+        </ion-label>
+        <ion-input type="text" formControlName="nform"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Código interno do formulário:
+        </ion-label>
+        <ion-input type="text" formControlName="formulario"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Ordem do formulário:
+        </ion-label>
+        <ion-input type="text" formControlName="fordem"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Nível:
+        </ion-label>
+        <ion-input type="text" formControlName="nivel"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Tipo:
+        </ion-label>
+        <ion-input type="text" formControlName="tipo"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Ordem:
+        </ion-label>
+        <ion-input type="text" formControlName="ordem"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Parametro:
+        </ion-label>
+        <ion-input type="text" formControlName="parametro"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Nome:
+        </ion-label>
+        <ion-input type="text" formControlName="nome"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Imagem:
+        </ion-label>
+        <ion-input type="text" formControlName="img"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Resposta 1:
+        </ion-label>
+        <ion-input type="text" formControlName="ans1"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Resposta 2:
+        </ion-label>
+        <ion-input type="text" formControlName="ans2"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Resposta 3:
+        </ion-label>
+        <ion-input type="text" formControlName="ans3"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Resposta 4:
+        </ion-label>
+        <ion-input type="text" formControlName="ans4"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Resposta 5:
+        </ion-label>
+        <ion-input type="text" formControlName="ans5"></ion-input>
+      </ion-item>
+
+      <ion-button (click)="submitGestalt(gestaltForm.value)" expand="block" color="secondary">
+        <p>Publicar</p>
+      </ion-button>
+    </form>
+  </div>
+  <!-- Gestalt Question form End -->
+
+  <!-- Binaria Question form -->
+  <div *ngIf="form_type == 'binaria'">
+    <form [formGroup]="binariaForm">
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Categoria:
+        </ion-label>
+        <ion-input type="text" formControlName="category"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Nome do formulário:
+        </ion-label>
+        <ion-input type="text" formControlName="nform"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Código do Formulário:
+        </ion-label>
+        <ion-input type="text" formControlName="formulario"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Ordem do formulário no fluxo:
+        </ion-label>
+        <ion-input type="text" formControlName="fordem"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Escala / Nível:
+        </ion-label>
+        <ion-input type="text" formControlName="nivel"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Tipo: 
+        </ion-label>
+        <ion-input type="text" formControlName="tipo"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Ordem da questão no formulário:
+        </ion-label>
+        <ion-input type="text" formControlName="ordem"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Parâmetro:
+        </ion-label>
+        <ion-input type="text" formControlName="parametro"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Pergunta:
+        </ion-label>
+        <ion-input type="text" formControlName="pergunta"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Resposta 1:
+        </ion-label>
+        <ion-input type="text" formControlName="ans1"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Resposta 2:
+        </ion-label>
+        <ion-input type="text" formControlName="ans2"></ion-input>
+      </ion-item>
+
+      <ion-button (click)="submitBinaria(binariaForm.value)" expand="block" color="secondary">
+        <p>Publicar</p>
+      </ion-button>
+    </form>
+  </div>
+  <!-- Binaria Question form End -->
+
+  <!-- Level form -->
+  <div *ngIf="form_type == 'levels'">
+    <form [formGroup]="levelForm">
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Categoria:
+        </ion-label>
+        <ion-input type="text" formControlName="category"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Formulário:
+        </ion-label>
+        <ion-input type="text" formControlName="formulario"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Ordem do formulário no fluxo:
+        </ion-label>
+        <ion-input type="text" formControlName="fordem"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Escala / Nível:
+        </ion-label>
+        <ion-input type="text" formControlName="nivel"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Ordem:
+        </ion-label>
+        <ion-input type="text" formControlName="ordem"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Pergunta:
+        </ion-label>
+        <ion-input type="text" formControlName="pergunta"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Parâmetro:
+        </ion-label>
+        <ion-input type="text" formControlName="parametro"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Resposta 1:
+        </ion-label>
+        <ion-input type="text" formControlName="ans1"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Resposta 2:
+        </ion-label>
+        <ion-input type="text" formControlName="ans2"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Resposta 3:
+        </ion-label>
+        <ion-input type="text" formControlName="ans3"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Resposta 4:
+        </ion-label>
+        <ion-input type="text" formControlName="ans4"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="stacked">
+          Resposta 5:
+        </ion-label>
+        <ion-input type="text" formControlName="ans5"></ion-input>
+      </ion-item>
+
+      <ion-button (click)="submitLevels(levelForm.value)" expand="block" color="secondary">
+        <p>Publicar</p>
+      </ion-button>
+    </form>
+  </div>
+  <!-- Level form End -->
+</ion-content>

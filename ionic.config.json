@@ -1,0 +1,7 @@
+{
+  "name": "miaf1",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
