@@ -1,20 +1,234 @@
 .welcome-card img {
-    max-height: 35vh;
-    overflow: hidden;
+  max-height: 35vh;
+  overflow: hidden;
+}
+
+.sub-toolbar {
+  h1 {
+    color: #2694a3;
+    font-weight: bold;
   }
-  
-  .sub-toolbar{
-    h1{
-      color: #2694a3;
-      font-weight: bold;
+}
+
+ion-card {
+  min-height: 500px;
+  margin: 0;
+}
+
+h1,
+p {
+  margin: 0;
+  padding: 0;
+}
+.agenda-container {
+  padding: 0 15px;
+
+  .pen {
+    color: #f0bfba;
+  }
+
+  .date-change {
+    margin-bottom: 15px;
+    .signle-month-date {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      .s-m-d-left p,
+      .date-d-l-child-1 p,
+      .date-d-l-child-2 p,
+      .s-m-d-right a {
+        font-family: RiftSoft-Demi;
+        font-size: 14px;
+        color: #02456c;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+      }
+      .s-m-d-right {
+        display: flex;
+        align-items: center;
+        margin-right: 5px;
+        a {
+          &.icon-aberto {
+            margin: 0px 20px;
+          }
+        }
+        .switch {
+          position: relative;
+          display: inline-block;
+          width: 38px;
+          height: 17px;
+          /* Hide default HTML checkbox */
+          & > input {
+            display: none;
+          }
+
+          /* The slider */
+          .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: 0.4s;
+            transition: 0.4s;
+            &::before {
+              position: absolute;
+              content: "";
+              height: 22px;
+              width: 22px;
+              left: -6px;
+              bottom: -2px;
+              background-color: #bbb;
+              -webkit-transition: 0.4s;
+              transition: 0.4s;
+            }
+            /* Rounded sliders */
+            &.round {
+              border-radius: 34px;
+              &::before {
+                border-radius: 50%;
+              }
+            }
+          }
+          input {
+            &:checked + .slider {
+              background-color: #7fcac3;
+              content: attr(data-on);
+            }
+            &:focus + .slider {
+              box-shadow: 0 0 1px #2196f3;
+            }
+          }
+
+          input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+            background: #009688;
+          }
+        }
+      }
+    }
+
+    .single-time-iocn {
+      display: flex;
+      overflow-x: scroll;
+      flex-direction: column;
+      .start-end-time {
+        display: flex;
+        align-content: center;
+        & > .s-e-t-left {
+          flex: 0 0 42%;
+          display: flex;
+          align-items: center;
+          margin-bottom: 10px;
+        }
+        .s-e-t-left h4,
+        .date-d-l-child-1 h4 {
+          font-family: segoe-ui-bold;
+          font-size: 18px;
+          color: #2694a3;
+        }
+        .s-e-t-left p,
+        .s-e-t-right p {
+          font-family: RiftSoft-Demi;
+          font-size: 14px;
+          font-weight: 400;
+          color: #02456c;
+          letter-spacing: 2px;
+          margin-left: 63px;
+        }
+        .s-e-t-right {
+          flex: 0 0 55%;
+          text-align: center;
+          & > p {
+            margin-left: 0px !important;
+          }
+        }
+      }
+
+      .time-icon-left-right {
+        display: flex;
+        .time-icon {
+          &-left {
+            flex: 0 0 42%;
+            margin-right: 1%;
+            margin-bottom: 10px;
+          }
+          &-img {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            background: #d1ebf0;
+            border: 1px dashed #228a9c;
+            border-radius: 30px;
+            .t-i-single-img {
+              width: 60px;
+              height: 60px;
+              background: #fff;
+              border-radius: 50%;
+              text-align: center;
+              align-items: center;
+              display: flex;
+              justify-content: center;
+            }
+          }
+          &-right {
+            flex: 0 0 55%;
+            .t-i-right-img {
+              display: flex;
+              background: #d1ebf0;
+              border: 1px dashed #228a9c;
+              border-radius: 30px;
+              justify-content: space-between;
+              .t-i-right-single-img {
+                width: 60px;
+                height: 60px;
+                background: #fff;
+                border-radius: 50%;
+                text-align: center;
+                align-items: center;
+                display: flex;
+                justify-content: center;
+                &:last-child {
+                  margin-right: inherit;
+                }
+              }
+            }
+            .t-i-left-text {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-between;
+              .t-i-single-left-txt {
+                padding: 0px 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .t-i-single-img img,
+    .t-i-right-single-img img {
+      width: 35px !important;
+      display: inline-block !important;
+    }
+    .time-icon-text {
+      display: flex;
+      justify-content: space-between;
+    }
+    .t-i-single-text {
+      padding: 0px 10px;
+    }
+    .t-i-single-text p,
+    .t-i-single-left-txt p {
+      font-family: "Source Sans Pro", sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      color: #8d8c8c;
     }
   }
-  
-  ion-card{
-    min-height: 500px;
-    margin: 0;
-  }
-  
-  h1, p{
-    margin: 0; padding: 0;
-  }
+}

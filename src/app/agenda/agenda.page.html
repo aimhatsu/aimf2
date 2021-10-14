@@ -1,69 +1,139 @@
 <ion-header>
-    <ion-toolbar color="primary">
-      <div wrap-box style="display: flex">
-  
-        <ion-title>
-          <img src="../../assets/images/mia-wht.png" width="200" alt="">
-        </ion-title>
-  
-        <ion-buttons slot="end" class="ion-text-right">
-            <app-user-bar></app-user-bar>
-        </ion-buttons>
-      </div>
-    </ion-toolbar>
-  
-  </ion-header>
-  
-  <ion-content>
-  
-    <div wrap-box>
-      <ion-grid>
-        <ion-row class="sub-toolbar">
-          <ion-col>
-            <h1>AGENDA</h1>
-            <p>Gerencie seu tempo, faça o que você quiser</p>
-          </ion-col>
-          <ion-col class="ion-text-right">
-            <ion-button color="secondary">
-              <ion-icon name="clipboard"></ion-icon> Atender
-            </ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-  
-      <ion-card mode="ios">
-        <ion-card-header class="ion-text-center">
-          <ion-grid>
-            <ion-row>
-              <ion-col>
-                <ion-button fill="clear">
-                  <ion-icon name="ios-arrow-back"></ion-icon>
-                </ion-button>
-              </ion-col>
-              <ion-col size="6" class="ion-text-center">
-                <p>Selecione o mes</p>
-                <h3><strong>Novembro 2019</strong></h3>
-              </ion-col>
-              <ion-col>
-                <ion-button fill="clear">
-                  <ion-icon name="ios-arrow-forward"></ion-icon>
-                </ion-button>
-              </ion-col>
-              <div style="position: absolute; right: 8px;">
-                  <ion-button color="secondary" fill="outline" shape="round"><ion-icon name="md-create"></ion-icon></ion-button>
+  <ion-toolbar color="primary">
+    <div wrap-box style="display: flex">
+
+      <ion-title>
+        <img src="../../assets/images/mia-wht.png" width="200" alt="">
+      </ion-title>
+
+      <ion-buttons slot="end" class="ion-text-right">
+        <app-user-bar></app-user-bar>
+      </ion-buttons>
+    </div>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+  <div wrap-box>
+    <ion-grid>
+      <ion-row class="sub-toolbar">
+        <ion-col>
+          <h1>AGENDA</h1>
+          <p>Gerencie seu tempo, faça o que você quiser</p>
+        </ion-col>
+        <ion-col class="ion-text-right">
+          <ion-button color="secondary">
+            <ion-icon name="clipboard"></ion-icon> Atender
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-card mode="ios">
+      <ion-card-header class="ion-text-center">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-button fill="clear">
+                <ion-icon name="ios-arrow-back"></ion-icon>
+              </ion-button>
+            </ion-col>
+            <ion-col size="6" class="ion-text-center">
+              <p>Selecione o mes</p>
+              <h3><strong>Novembro 2019</strong></h3>
+            </ion-col>
+            <ion-col>
+              <ion-button fill="clear">
+                <ion-icon name="ios-arrow-forward"></ion-icon>
+              </ion-button>
+            </ion-col>
+            <div style="position: absolute; right: 8px;">
+              <ion-button color="secondary" fill="outline" shape="round">
+                <fa-icon icon="pen" class="pen"></fa-icon>
+
+              </ion-button>
+            </div>
+          </ion-row>
+        </ion-grid>
+      </ion-card-header>
+
+      <div class="agenda-container">
+        <div class="date-change" *ngFor="let item of agenda; index as i">
+          <div class="signle-month-date">
+            <div class="s-m-d-left">
+              <p>{{item.date}}</p>
+            </div>
+            <div class="s-m-d-right">
+              <fa-icon icon="pen" class="pen"></fa-icon>
+              <a class="icon-aberto" href="#">aberto</a>
+              <label class="switch">
+                <input id="checkboxinp" type="checkbox">
+                <div class="slider round"></div>
+              </label>
+            </div>
+          </div>
+
+
+
+
+          <div class="time-icon-area">
+            <div class="single-time-iocn">
+
+              <div class="start-end-time">
+                <div class="s-e-t-left">
+                  <h4>{{item.name}}</h4>
+                  <p>{{item.morning}}</p>
+                </div>
+                <div class="s-e-t-right">
+                  <p>{{item.night}}</p>
+                </div>
               </div>
-            </ion-row>
-          </ion-grid>
-        </ion-card-header>
-      </ion-card>
-  
-      <!-- <ion-fab vertical="top" horizontal="end" style="margin-top: 60px;">
+
+              <div class="time-icon-left-right">
+                <div class="time-icon-left">
+                  <div class="time-icon-img">
+                    <div class="t-i-single-img" *ngFor="let slot of item.morningSlots">
+                      <img src="../../assets/images/icn_surfing.png" alt="icon">
+                    </div>
+                  </div>
+                  <div class="time-icon-text">
+                    <div class="t-i-single-text" *ngFor="let slot of item.morningSlots">
+                      <p>{{slot}}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="time-icon-right">
+                  <div class="t-i-right-img">
+                    <div class="t-i-right-single-img" *ngFor="let slot of item.nightSlots">
+                      <img src="../../assets/images/icn_surfing.png" alt="icon">
+                    </div>
+                  </div>
+
+                  <div class="t-i-left-text">
+                    <div class="t-i-single-left-txt" *ngFor="let slot of item.nightSlots">
+                      <p>{{slot}}</p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-card>
+
+    <!-- <ion-fab vertical="top" horizontal="end" style="margin-top: 60px;">
         <ion-button fill="outline" shape="round" color="secondary">
           <ion-icon name="md-create"></ion-icon>
         </ion-button>
       </ion-fab> -->
-  
-    </div>
-  
-  
-  </ion-content>
+
+  </div>
+
+
+</ion-content>
