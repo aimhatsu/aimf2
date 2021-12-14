@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { AgendaPage } from './agenda.page';
 import { ComponentsModule } from "../components/components.module";
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 const routes: Routes = [
   {
     path: '',
@@ -21,6 +21,7 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     ComponentsModule,
+    FontAwesomeModule,
     RouterModule.forChild(routes)
   ],
   declarations: [AgendaPage],

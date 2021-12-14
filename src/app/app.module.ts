@@ -16,17 +16,21 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { FormModalPage } from '../app/form-modal/form-modal.page';
 import { UserDataComponent } from './components/user-data/user-data.component';
 
-
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
 
 
 @NgModule({
   declarations: [AppComponent, UserDataComponent],
-  entryComponents: [ FormModalPage, UserDataComponent ],
+  entryComponents: [FormModalPage, UserDataComponent],
   imports: [
-    HttpClientModule, 
-    BrowserModule, 
-    IonicModule.forRoot(), 
-    IonicStorageModule.forRoot(), 
+    HttpClientModule,
+    BrowserModule,
+    IonicModule.forRoot(),
+    FontAwesomeModule,
+    IonicStorageModule.forRoot(),
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -47,4 +51,8 @@ import { UserDataComponent } from './components/user-data/user-data.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, fab, far);
+  }
+}

@@ -23,7 +23,7 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
-      this.navCtrl.navigateRoot(['login']);
+      // this.navCtrl.navigateRoot(['login']);
     });
   }
 }
